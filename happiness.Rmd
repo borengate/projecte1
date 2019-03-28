@@ -1,0 +1,62 @@
+---
+title: "¿ES BUENO EL SOLECITO PARA SER FELIZ?"
+author: "John Snow"
+date: "28/3/2019"
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
+editor_options:
+  chunk_output_type: console
+bibliography: references.bib
+csl: ecology-letters.csl
+---
+
+## INTRODUCCIÓN
+
+En este estudio vamos a comprobar si las personas que pasan más tiempo al sol son más felices [@Rezende_2007]. Esto explicaría el por qué en Andalucía la gente es tan simpática y alegre. Un resultado positivo contribuiría a solucionar los problemas de mala leche y tristeza que se observan entre los individuoas que viven en paises del norte (ej: Alemania, Suecia, Dinamarca) [@Young_2018].
+
+## MÉTODOS
+
+```{r datos, include=FALSE}
+
+datos <- read.table("reprosci/data.txt", header=TRUE)
+
+```
+
+```{r model, echo=FALSE} 
+
+modelo <- lm(happiness ~ sunshine, data=datos) 
+# no es necesraio hacer dos chunks para estos dos códigos.
+
+```
+
+Se han entrevistado `r nrow(datos)` personas para conocer de primera mano su nivel de felicidad y cuntas horas pasan al sol. Los datos recabados se han ajustado a un modelo lineal para comprobar sy hay una correlación significativa entre ambas variables.
+
+Estructura del modelo
+$$
+y = \alpha + \beta * X
+$$
+
+## RESULTADOS
+
+Se ha encontrado una relación significativa entre la felicidad expresada por los individuos y las horas que se han pasado al sol (`r round(coef(modelo)[2], digits=3)`).
+
+```{r figura, echo=FALSE}
+library(visreg)
+visreg(modelo)
+```
+
+```{r tabla, echo=FALSE}
+library(knitr)
+library(xtable)
+kable(xtable(modelo))
+# kable genera una tabla en Rmarkdown
+```
+
+## DISCUSIÓN
+
+Queda claro: a más sol, más alegría. Nuestros resultados ofrecen una explicación robusta al hecho que los andaluces son más felices y alegres que los habitantes de climas más fríos. Además, la relación encontrada está de acuerdo con los resultados publicados anteriormente por Reyes y colaboradores (Reyes et al., 1976).
+
+## BIBLIOGRAFÍA
