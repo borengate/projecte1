@@ -37,7 +37,7 @@ Se han entrevistado `r nrow(datos)` personas para conocer de primera mano su niv
 
 Estructura del modelo
 $$
-y = \alpha + \beta * X
+y = \alpha + \beta * X + \epsilon
 $$
 
 ## RESULTADOS
