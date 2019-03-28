@@ -46,6 +46,7 @@ Se ha encontrado una relación significativa entre la felicidad expresada por lo
 
 ```{r figura, echo=FALSE}
 library(visreg)
+library(ggplot2)
 visreg(modelo, gg = TRUE)
 ```
 
