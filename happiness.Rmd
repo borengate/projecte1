@@ -21,7 +21,8 @@ En este estudio vamos a comprobar si las personas que pasan más tiempo al sol s
 
 ```{r datos, include=FALSE}
 
-datos <- read.table("reprosci/data.txt", header=TRUE)
+datos <- read.table("data.txt", header=TRUE)
+datos <- datos[-c(12,36), ]
 
 ```
 
